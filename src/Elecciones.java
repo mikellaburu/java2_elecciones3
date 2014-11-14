@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-import com.zubiri.elecciones.*;
+
 public class Elecciones {
 
 	public static void main(String[] args) {
@@ -27,15 +27,11 @@ public class Elecciones {
 				case "a": 
 					String nombre=" ";
 					String apellido1=" ";
-					String apellido2=" ";
+					
 					String dni=" ";
 					int edad=0;
 					boolean mayor=false;
-					String genero=" ";
-					String direccion=" ";
-					long fijo=0;
-					long movil=0;
-					
+										
 					System.out.println("DATOS DEL HABITANTE");
 					System.out.println(" ");
 					System.out.println("Ingresa tus datos");
@@ -43,37 +39,23 @@ public class Elecciones {
 					nombre=tecla.next();
 					System.out.print("Primer apellido: ");
 					apellido1=tecla.next();
-					System.out.print("Segundo apellido: ");
-					apellido2=tecla.next();
+					
 					System.out.print("DNI: ");
 					dni=tecla.next();
 					System.out.print("Edad: ");
 					edad=tecla.nextInt();
-					System.out.print("Genero: ");
-					genero=tecla.next();
-					System.out.print("Direccion: ");
-					direccion=tecla.next();
-					System.out.print("Telefono fijo: ");
-					fijo=tecla.nextLong();
-					System.out.print("Telefono movil: ");
-					movil=tecla.nextLong();
 					
 					Habitante h1=new Habitante();
 					h1.setNombre(nombre);
 					h1.setApellido1(apellido1);
-					h1.setApellido2(apellido2);
 					h1.setDni(dni);
 					h1.setEdad(edad);
-					h1.setSexo(genero);
-					h1.setDireccion(direccion);
-					h1.setFijo(fijo);
-					h1.setMovil(movil);
+					
 					
 					
 					System.out.println("Datos introducidos del  habitante");
 					System.out.println("Nombre: "+h1.getNombre());
 					System.out.println("Apellido 1: "+h1.getApellido1());
-					System.out.println("Apellido 2: "+h1.getApellido2());
 					System.out.println("DNI: "+h1.getDni());
 					System.out.println("Edad: "+h1.getEdad());
 					if (h1.getMayor()){
@@ -81,10 +63,6 @@ public class Elecciones {
 					}else{
 						System.out.println("El habitante es menor.");
 					}
-					System.out.println("Genero: "+h1.getSexo());
-					System.out.println("Direccion: "+h1.getDireccion());
-					System.out.println("Fijo: "+h1.getFijo());
-					System.out.println("Movil: "+h1.getMovil());
 					break;
 				
 				case "b":
@@ -140,6 +118,7 @@ public class Elecciones {
 					break;
 				
 				case "c":
+				try{
 					System.out.println("Partido");
 					String nomPartido=" ";
 					String siglas=" ";
@@ -174,11 +153,15 @@ public class Elecciones {
 					System.out.println("Ideologia: "+p1.getIdeologia());
 					System.out.println("Numero de afiliados: "+p1.getMiembros());
 					System.out.println("Candidato: "+p1.getCandidato());
+				}catch(Exception e){
+					System.out.println("Error: "+e);
+				}
 
 
 					break;
 				
 				case "d":
+				
 					System.out.println("Inmueble");
 					String nomPueblo=" ";
 					String calle=" ";
@@ -232,6 +215,7 @@ public class Elecciones {
 					System.out.println("Tipo de local: "+i1.getTipoLocal());
 					System.out.println("Metros cuadrados: "+i1.getMetros());
 					break;
+
 				
 				case "e":
 					System.out.println("Espacio Publico");
@@ -276,10 +260,13 @@ public class Elecciones {
 								//FileReader leerFichero=new FileReader(fichero);
 								//BufferedReader bf=new BufferedReader(leerFichero);
 								ArrayList <Partido> partidos=new ArrayList <Partido>();
-								String fila=" ";
+								//String fila=bf.readLine();
+								String fila=leerFichero.nextLine();
+
+								//while ((fila=bf.readLine())!=null) {
 								while (leerFichero.hasNextLine()) {
 									fila=leerFichero.nextLine();//lerro bat irakurri fitxategitik eta string moduan gorde
-									String [] dividirAtributos = fila.split(" , ");//atributuak komaz bereiztu eta string array batean gorde 
+									String [] dividirAtributos = fila.split(",");//atributuak komaz bereiztu eta string array batean gorde 
 									//lista.add(fila);//fitxategiko lerroaren edukia ArrayListean gehitu
 									Partido p = new Partido();
 									p.setNombre(dividirAtributos[0]);
@@ -298,7 +285,11 @@ public class Elecciones {
 								//ArrayList-aren edukia pantailaratu
 								System.out.println("listadoPartidos.txt");
 								for(int i=0;i<partidos.size();i++){
-									System.out.println("\t"+(i+1)+". "+partidos.get(i));
+									System.out.println("\t1. "+partidos.get(i).getNombre());
+									System.out.println("\t2. "+partidos.get(i).getSiglas());
+									System.out.println("\t3. "+partidos.get(i).getIdeologia());
+									System.out.println("\t4. "+partidos.get(i).getMiembros());
+									System.out.println("\t5. "+partidos.get(i).getCandidato());
 								}
 						}catch(FileNotFoundException fnfe){
 								System.out.println("Error: "+fnfe);
@@ -307,6 +298,54 @@ public class Elecciones {
 						System.out.println("Error "+ioe);
 					}
 					
+					break;
+
+				case "g":
+				try{
+					System.out.println("Leer Habitantes");
+					String ruta2="/home/zubiri/ProyectosJava/java2_elecciones3/src/";
+					String nombreFichero2="listaHabitantes.txt";
+					File  fichero2= new File(ruta2, nombreFichero2);
+					//FileReader leerFichero2 = new FileReader (fichero2);
+					//BufferedReader bf2 = new BufferedReader(leerFichero2);
+					Scanner leerFichero2=new Scanner (fichero2);
+					ArrayList<Habitante> habitantes = new ArrayList<Habitante>();
+					//String fila2 = bf2.readLine();
+					String fila2=leerFichero2.nextLine();
+					do{
+						
+						String [] cortarString = fila2.split(",");	
+						Habitante h = new Habitante(); 
+						
+						h.setNombre(cortarString[0]);
+						h.setApellido1(cortarString[1]);
+						h.setDni(cortarString[2]);
+						h.setEdad(Integer.parseInt(cortarString[3]));
+						//si el habitante introducido es mayor de edad lo añadira al censo
+						if (Integer.parseInt(cortarString[3])>=18){
+
+							//el valor que se le ha dado a cada atributo se lo pasa al objeto de tipo arraylist de partido
+							habitantes.add(h);
+						}
+
+								
+					} while (leerFichero2.hasNextLine());
+					//} while ((fila2 = bf2.readLine()) != null);
+
+					System.out.println("Censados: ");
+
+		//imprimira la informacion del array de habitantes
+					for(int j=0; j<habitantes.size(); j++){
+			            System.out.println(" ");
+			            System.out.println("\tDni "+habitantes.get(j).getDni() );
+			            System.out.println("\tNombre:: "+habitantes.get(j).getNombre());
+			            System.out.println("\tApellido 1: "+ habitantes.get(j).getApellido1());
+			            System.out.println("\tEdad: "+ habitantes.get(j).getEdad());
+			        }	
+			    }catch(Exception e){
+			    	System.out.println("Error: "+e);
+			    }
+
 					break;
  					
 

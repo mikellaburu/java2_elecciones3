@@ -1,5 +1,5 @@
 Euskal-Herria-Bildu, EHb, ezker-abertzalea, 153, Arraiz
-Euzko-Alderdi-JELtzalea, eskuin-abertzalea, 243, Urkullu
+Euzko-Alderdi-JELtzalea, EAJ, eskuin-abertzalea, 243, Urkullu
 Izquierda-Unida, IU, komunista-espainiarra, 50, Madrazo
 Partido-Socialista, PSOE, sozialista-espainiarra, 150, Lopez
 Union-del-Pueblo-Navarro, UPN, falangista-espainiarra, 156, Porcina
