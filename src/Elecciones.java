@@ -313,8 +313,9 @@ public class Elecciones {
 					Scanner leerFichero2=new Scanner (fichero2);
 					ArrayList<Habitante> habitantes = new ArrayList<Habitante>();
 					//String fila2 = bf2.readLine();
-					String fila2=leerFichero2.nextLine();
-					do{
+					//String fila2=leerFichero2.nextLine();
+					String fila2;
+					/*do{
 						
 						String [] cortarString = fila2.split(", ");	
 						Habitante h = new Habitante(); 
@@ -331,7 +332,25 @@ public class Elecciones {
 						}
 
 								
-					} while (leerFichero2.hasNextLine());
+					} while (leerFichero2.hasNextLine());*/
+					while(leerFichero2.hasNextLine()){
+						fila2=leerFichero2.nextLine();
+						String [] cortarString = fila2.split(", ");	
+						Habitante h = new Habitante(); 
+						
+						h.setNombre(cortarString[0]);
+						h.setApellido1(cortarString[1]);
+						h.setDni(cortarString[2]);
+						h.setEdad(Integer.parseInt(cortarString[3]));
+						//si el habitante introducido es mayor de edad lo añadira al censo
+						if (Integer.parseInt(cortarString[3])>=18){
+
+							//el valor que se le ha dado a cada atributo se lo pasa al objeto de tipo arraylist de partido
+							habitantes.add(h);
+						}
+
+								
+					}
 					//} while ((fila2 = bf2.readLine()) != null);
 
 					System.out.println("Censados: ");
