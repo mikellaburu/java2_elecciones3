@@ -18,8 +18,8 @@ public class Elecciones {
 			System.out.println("\tc) Partido");
 			System.out.println("\td) Inmueble");
 			System.out.println("\te) Espacio Publico");
-			System.out.println("\tf) Leer nombres de los partidos desde 'listadoPartidos.txt'");
-			System.out.println("\tg) ");
+			System.out.println("\tf) Leer nombres de los partidos desde 'listadoPartidos.txt'y mostrar sus datos");
+			System.out.println("\tg) Leer datos de los habitantes desde 'listaHabitantes.txt' y mostrar los censados(+18)");
 			System.out.println("\tx) Salir");
 			
 			opcion=tecla.next();
@@ -266,7 +266,7 @@ public class Elecciones {
 								//while ((fila=bf.readLine())!=null) {
 								while (leerFichero.hasNextLine()) {
 									fila=leerFichero.nextLine();//lerro bat irakurri fitxategitik eta string moduan gorde
-									String [] dividirAtributos = fila.split(",");//atributuak komaz bereiztu eta string array batean gorde 
+									String [] dividirAtributos = fila.split(", ");//atributuak komaz bereiztu eta string array batean gorde 
 									//lista.add(fila);//fitxategiko lerroaren edukia ArrayListean gehitu
 									Partido p = new Partido();
 									p.setNombre(dividirAtributos[0]);
@@ -314,7 +314,7 @@ public class Elecciones {
 					String fila2=leerFichero2.nextLine();
 					do{
 						
-						String [] cortarString = fila2.split(",");	
+						String [] cortarString = fila2.split(", ");	
 						Habitante h = new Habitante(); 
 						
 						h.setNombre(cortarString[0]);
