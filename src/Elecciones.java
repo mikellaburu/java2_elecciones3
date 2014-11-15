@@ -261,7 +261,8 @@ public class Elecciones {
 								//BufferedReader bf=new BufferedReader(leerFichero);
 								ArrayList <Partido> partidos=new ArrayList <Partido>();
 								//String fila=bf.readLine();
-								String fila=leerFichero.nextLine();
+								//String fila=leerFichero.nextLine();
+								String fila;
 
 								//while ((fila=bf.readLine())!=null) {
 								while (leerFichero.hasNextLine()) {
@@ -285,6 +286,7 @@ public class Elecciones {
 								//ArrayList-aren edukia pantailaratu
 								System.out.println("listadoPartidos.txt");
 								for(int i=0;i<partidos.size();i++){
+									System.out.println("Partido "+i+": ");
 									System.out.println("\t1. "+partidos.get(i).getNombre());
 									System.out.println("\t2. "+partidos.get(i).getSiglas());
 									System.out.println("\t3. "+partidos.get(i).getIdeologia());
@@ -336,7 +338,8 @@ public class Elecciones {
 
 		//imprimira la informacion del array de habitantes
 					for(int j=0; j<habitantes.size(); j++){
-			            System.out.println(" ");
+
+			            System.out.println("Habitante censado "+j+": ");
 			            System.out.println("\tDni "+habitantes.get(j).getDni() );
 			            System.out.println("\tNombre:: "+habitantes.get(j).getNombre());
 			            System.out.println("\tApellido 1: "+ habitantes.get(j).getApellido1());
